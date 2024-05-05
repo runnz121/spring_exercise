@@ -42,4 +42,10 @@ public class TestDomainService {
         return testRepository.findByTestEntityWithValue(value)
                 .orElseThrow(RuntimeException::new);
     }
+
+    @Transactional
+    public TestEntity getTestEntityByKey(Long key) {
+        return testRepository.findByTestEntity(key)
+                .orElseThrow(RuntimeException::new);
+    }
 }
