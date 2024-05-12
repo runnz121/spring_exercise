@@ -48,4 +48,9 @@ public class TestDomainService {
         return testRepository.findByTestEntity(key)
                 .orElseThrow(RuntimeException::new);
     }
+
+    @Transactional
+    public void save(TestEntity testEntity) {
+        testRepository.save(testEntity);
+    }
 }

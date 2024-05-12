@@ -17,4 +17,9 @@ public class Test2DomainService {
         return test2Repository.findById(key)
                 .orElseThrow(RuntimeException::new);
     }
+
+    @Transactional
+    public void saveTestEntity2(TestEntity2 testEntity2) {
+        test2Repository.save(testEntity2);
+    }
 }
