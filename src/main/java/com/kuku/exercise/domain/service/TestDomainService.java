@@ -4,7 +4,10 @@ import com.kuku.exercise.domain.TestEntity;
 import com.kuku.exercise.domain.repository.TestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,7 +53,17 @@ public class TestDomainService {
     }
 
     @Transactional
-    public void save(TestEntity testEntity) {
-        testRepository.save(testEntity);
+    public TestEntity save(TestEntity testEntity) {
+        return testRepository.save(testEntity);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void newTransactionSave(TestEntity entity) {
+        testRepository.save(entity);
+    }
+
+    @Transactional
+    public void searchSavedEntity(TestEntity test) {
+
     }
 }

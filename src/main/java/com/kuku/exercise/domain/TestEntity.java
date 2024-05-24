@@ -30,4 +30,8 @@ public class TestEntity {
     public void decreaseQuantity(int requestQuantity) {
         this.totalQuantity = this.totalQuantity - requestQuantity;
     }
+
+    public void changeName(String name) {
+        this.name = name;
+    }
 }

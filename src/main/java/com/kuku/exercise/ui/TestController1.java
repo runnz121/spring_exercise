@@ -1,5 +1,6 @@
 package com.kuku.exercise.ui;
 
+import com.kuku.exercise.application.RequiresNewTestService;
 import com.kuku.exercise.application.TestEventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController1 {
 
     private final TestEventService testEventService;
+    private final RequiresNewTestService requiresNewTestService;
+
     @GetMapping("/event/{id}")
     public void testController11(@PathVariable("id") String id) {
         testEventService.eventPublish(id);
+    }
+
+    @GetMapping("/new-transaction")
+    public void newTransactionController() {
+        requiresNewTestService.callMethod();
+    }
+
+    @GetMapping("/pre-transaction")
+    public void preSavedTransactionController() {
+        requiresNewTestService.preSavedEntity();
     }
 }
