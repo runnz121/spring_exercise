@@ -2,6 +2,7 @@ package com.kuku.exercise.ui;
 
 import com.kuku.exercise.application.RequiresNewTestService;
 import com.kuku.exercise.application.TestEventService;
+import com.kuku.exercise.application.TestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController1 {
 
+    private final TestService testService;
     private final TestEventService testEventService;
     private final RequiresNewTestService requiresNewTestService;
 
@@ -29,5 +31,10 @@ public class TestController1 {
     @GetMapping("/pre-transaction")
     public void preSavedTransactionController() {
         requiresNewTestService.preSavedEntity();
+    }
+
+    @GetMapping("/null")
+    public void saveEntityTest() {
+        testService.saveEntityTest();
     }
 }

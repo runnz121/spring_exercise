@@ -1,7 +1,9 @@
 package com.kuku.exercise.domain.service;
 
 import com.kuku.exercise.domain.TestEntity;
+import com.kuku.exercise.domain.TestEntity3;
 import com.kuku.exercise.domain.repository.TestRepository;
+import com.kuku.exercise.domain.repository.TestRepository3;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class TestDomainService {
 
     private final TestRepository testRepository;
+    private final TestRepository3 testRepository3;
 
     @Transactional
     public void decreaseEntityWithLock(Long id, int decreaseCount) {
@@ -65,5 +68,18 @@ public class TestDomainService {
     @Transactional
     public void searchSavedEntity(TestEntity test) {
 
+    }
+
+    @Transactional
+    public void saveNullEntity() {
+
+        TestEntity test = null;
+
+        TestEntity3 testEntity3 = TestEntity3.builder()
+                .testEntity(test)
+                .testEntityName(Optional.ofNullable(test).map(it -> it.getName()).orElse(null))
+                .build();
+
+        testRepository3.save(testEntity3);
     }
 }

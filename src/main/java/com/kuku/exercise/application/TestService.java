@@ -60,4 +60,9 @@ public class TestService {
         doneSignal.await();
         executorService.shutdown();
     }
+
+    @Transactional
+    public void saveEntityTest() {
+        testDomainService.saveNullEntity();
+    }
 }
