@@ -1,6 +1,7 @@
 package com.kuku.exercise.infrastructure.controller;
 
 import com.kuku.exercise.application.TestService;
+import com.kuku.exercise.domain.TestEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,11 @@ public class TestController {
     @GetMapping("/concurrent/{id}")
     public void concurrent(@PathVariable("id") Long id) throws InterruptedException {
         testService.multiThreadTest(id);
+    }
+
+    @GetMapping("/get/entity/{id}")
+    public TestEntity getTestEntity(@PathVariable("id") Long id) {
+        return testService.getTestEntity(id);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.kuku.exercise.application;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kuku.exercise.domain.TestEntity;
 import com.kuku.exercise.domain.repository.TestRepository;
 import com.kuku.exercise.domain.service.TestDomainService;
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequiredArgsConstructor
 public class TestService {
 
+    private final ObjectMapper objectMapper;
     private final TestRepository testRepository;
     private final TestDomainService testDomainService;
 
@@ -64,5 +66,25 @@ public class TestService {
     @Transactional
     public void saveEntityTest() {
         testDomainService.saveNullEntity();
+    }
+
+    @Transactional
+    public TestEntity getTestEntity(Long id) {
+        TestEntity testEntity = testRepository.getById(id);
+
+        TestEntity.Optional optional = null;
+        try {
+            optional = objectMapper.readValue(testEntity.getOptional(), TestEntity.Optional.class);
+        } catch (Exception ex) {
+
+        }
+        System.out.println(optional);
+
+        if (optional.isReturnable()) {
+            System.out.println("true");
+        } else {
+            System.out.println("False");
+        }
+        return testEntity;
     }
 }
