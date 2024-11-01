@@ -21,6 +21,7 @@ import java.util.List;
  *
  * save : endTime : 12939ms.
  * saveAll : endTime : 13103ms.
+ * bulk_insert : endTime : 12204ms.
  *
  * 100_000 * 10
  *
@@ -43,7 +44,7 @@ public class ParentDomainService {
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < 100_000; i++) {
+        for (int i = 0; i < 10_000; i++) {
 
             ParentEntity parent = ParentEntity.builder()
                     .name(String.valueOf(i))
