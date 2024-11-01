@@ -3,6 +3,7 @@ package com.kuku.exercise.ui;
 import com.kuku.exercise.application.RequiresNewTestService;
 import com.kuku.exercise.application.TestEventService;
 import com.kuku.exercise.application.TestService;
+import com.kuku.exercise.domain.service.ParentDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ public class TestController1 {
     private final TestService testService;
     private final TestEventService testEventService;
     private final RequiresNewTestService requiresNewTestService;
+    private final ParentDomainService parentDomainService;
 
     @GetMapping("/event/{id}")
     public void testController11(@PathVariable("id") String id) {
@@ -36,5 +38,10 @@ public class TestController1 {
     @GetMapping("/null")
     public void saveEntityTest() {
         testService.saveEntityTest();
+    }
+
+    @GetMapping("/bulk/save")
+    public void bulkSaveTest() {
+        parentDomainService.saveEntity();
     }
 }
