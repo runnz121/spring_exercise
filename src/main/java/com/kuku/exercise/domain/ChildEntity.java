@@ -19,4 +19,6 @@ public class ChildEntity {
     private Long id;
 
     private Long parentId;
+
+    private String name;
 }
