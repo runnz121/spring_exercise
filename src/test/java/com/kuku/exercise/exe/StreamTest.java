@@ -35,4 +35,19 @@ public class StreamTest {
                 () -> assertThat(map.get("testEntity2")).isEqualTo(3)
         );
     }
+
+    @Test
+    void forEachTest() {
+
+        List<Integer> listNums = List.of(1,2,3,4,5,6,7,8,9,10);
+
+        listNums.forEach(
+                nums -> {
+                    if (nums % 2 == 0) {
+                        return;
+                    }
+                    System.out.println(nums);
+                }
+        );
+    }
 }

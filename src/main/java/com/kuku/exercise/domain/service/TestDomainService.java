@@ -82,4 +82,8 @@ public class TestDomainService {
 
         testRepository3.save(testEntity3);
     }
+
+    public void sortTest() {
+        testRepository.findAll();
+    }
 }
