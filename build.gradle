@@ -32,6 +32,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 	testImplementation 'org.testcontainers:junit-jupiter'
 	testImplementation 'org.testcontainers:mysql'
+
+	implementation 'org.redisson:redisson-spring-boot-starter:3.16.8'
+
+	implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
 }
 
 tasks.named('test') {
